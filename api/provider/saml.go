@@ -24,7 +24,7 @@ import (
 	saml2 "github.com/russellhaering/gosaml2"
 	"github.com/russellhaering/gosaml2/types"
 	dsig "github.com/russellhaering/goxmldsig"
-	"github.com/gobuffalo/uuid"
+	"github.com/gofrs/uuid"
 	"golang.org/x/oauth2"
 )
 
@@ -222,7 +222,7 @@ func (ks ConfigX509KeyStore) CreateSigningCert() (*rsa.PrivateKey, []byte, error
 }
 
 func (ks ConfigX509KeyStore) SaveConfig(cert []byte, key *rsa.PrivateKey) error {
-	if uuid.Equal(ks.InstanceID, uuid.Nil) {
+	if ks.InstanceID == uuid.Nil {
 		return nil
 	}
 
